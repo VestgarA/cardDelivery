@@ -182,11 +182,9 @@ public class CardDeliveryTest {
 
     @Test
     public void choosingDateForWeekAhead() {
-        $("[data-test-id='date'] .input__icon").click();
+        $("[data-test-id='date']").click();
+        $(".calendar").sendKeys(Keys.DOWN, Keys.ENTER);
         $("[data-test-id='city'] input").setValue("Москва");
-        $("[data-test-id='date'] input").sendKeys(Keys.CONTROL + "A");
-        $("[data-test-id='date'] input").sendKeys(Keys.BACK_SPACE);
-        $("[data-test-id='date'] input").setValue(generation.plus1Week());
         $("[data-test-id='name'] input").setValue("Иван Иванов");
         $("[data-test-id='phone'] input").setValue("+79500000000");
         $("[data-test-id='agreement']").click();
@@ -194,6 +192,6 @@ public class CardDeliveryTest {
         $("[data-test-id='notification'] .notification__content")
                 .shouldBe(Condition.visible, Duration.ofSeconds(15));
         $("[data-test-id='notification'] .notification__content")
-                .shouldHave(text("Встреча успешно забронирована на " + generation.plus1Week()));
+                .shouldHave(text("Встреча успешно забронирована на "+ generation.plus1Week()));
     }
 }

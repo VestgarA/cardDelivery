@@ -13,7 +13,7 @@ public class DateGeneration {
     }
 
     public String plus1Week() {
-        LocalDate dateWeek = LocalDate.now().plusWeeks(1);
+        LocalDate dateWeek = LocalDate.now().plusDays(10);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         String dateWeekMeeting = dateWeek.format(formatter);
         return dateWeekMeeting;
